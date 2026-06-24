@@ -18,8 +18,8 @@
     --text:      #E6EDF3;
     --text-dim:  #8B9AAB;
     --text-faint:#5C6B7A;
-    --accent:    #39D98A;
-    --accent-dim:#1F6E4A;
+    --accent:    #8B5CF6;
+    --accent-dim:#4C2E8C;
     --amber:     #F2B84B;
     --red:       #F25C54;
     --mono: 'JetBrains Mono', monospace;
@@ -98,7 +98,7 @@
   }
   .dot-trio span:nth-child(1) { background: #F25C54; }
   .dot-trio span:nth-child(2) { background: #F2B84B; }
-  .dot-trio span:nth-child(3) { background: #39D98A; }
+  .dot-trio span:nth-child(3) { background: #8B5CF6; }
 
   .termbar-nav {
     display: flex;
@@ -131,13 +131,13 @@
     width: 8px; height: 8px;
     border-radius: 50%;
     background: var(--accent);
-    box-shadow: 0 0 0 0 rgba(57,217,138,0.6);
+    box-shadow: 0 0 0 0 rgba(139,92,246,0.6);
     animation: pulse 2s infinite;
   }
   @keyframes pulse {
-    0%   { box-shadow: 0 0 0 0 rgba(57,217,138,0.55); }
-    70%  { box-shadow: 0 0 0 8px rgba(57,217,138,0); }
-    100% { box-shadow: 0 0 0 0 rgba(57,217,138,0); }
+    0%   { box-shadow: 0 0 0 0 rgba(139,92,246,0.55); }
+    70%  { box-shadow: 0 0 0 8px rgba(139,92,246,0); }
+    100% { box-shadow: 0 0 0 0 rgba(139,92,246,0); }
   }
   @media (prefers-reduced-motion: reduce) {
     .status-line .pulse { animation: none; }
@@ -187,11 +187,11 @@
   .btn:hover { transform: translateY(-1px); text-decoration: none; }
   .btn-primary {
     background: var(--accent);
-    color: #06120B;
+    color: #F5F2FE;
     border-color: var(--accent);
     font-weight: 600;
   }
-  .btn-primary:hover { background: #4EE89D; }
+  .btn-primary:hover { background: #A684F7; }
   .btn-ghost { color: var(--text); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
