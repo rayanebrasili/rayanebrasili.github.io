@@ -233,6 +233,12 @@
   }
   .about-text p { color: var(--text-dim); margin-bottom: 16px; font-size: 15.5px; }
   .about-text strong { color: var(--text); font-weight: 600; }
+  .about-text .about-lead {
+    font-size: 18px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .about-text .about-lead strong { color: var(--accent); }
 
   .lang-card {
     background: var(--bg-card);
@@ -248,15 +254,32 @@
     color: var(--text-faint);
     margin-bottom: 14px;
   }
+
   .lang-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 14px;
-    padding: 7px 0;
+    padding: 9px 0;
     border-bottom: 1px solid var(--border-soft);
   }
   .lang-row:last-child { border-bottom: none; }
-  .lang-row span:last-child { color: var(--text-dim); font-family: var(--mono); font-size: 12.5px; }
+  .lang-level {
+    display: inline-flex;
+    gap: 5px;
+  }
+  .lang-level .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    display: inline-block;
+  }
+  .lang-level .dot.filled {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
 
   /* ---------- Skills ---------- */
   .skill-groups {
@@ -472,8 +495,7 @@
     </div>
     <p class="lede">
       Atuo na interseção entre infraestrutura e segurança: pipelines CI/CD, observabilidade
-      e práticas de DevSecOps em ambientes AWS e Azure. Estudante de Segurança da Informação,
-      construindo o caminho de DevOps para AppSec.
+      e práticas de DevSecOps em ambientes cloud.
     </p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#projetos">ver projetos →</a>
@@ -490,28 +512,31 @@
     </div>
     <div class="about-grid">
       <div class="about-text">
-        <p>
-          Sou <strong>DevOps Engineer</strong> com foco em infraestrutura, observabilidade
-          e monitoramento, atuando atualmente no time de <strong>DevSecOps / AppSec</strong>
-          na Ânima Educação, contribuindo com práticas de segurança em ambientes cloud,
-          FinOps e pipelines de CI/CD.
-        </p>
-        <p>
-          Minha trajetória começou em suporte técnico e projetos M2M & IoT, passou por times
-          de Cloud Analyst em empresas de tecnologia e monitoramento, e hoje converge para
-          segurança de aplicações — unindo a visão operacional de DevOps com a mentalidade
-          de defesa da Segurança da Informação.
-        </p>
-        <p>
-          Graduada em Segurança da Informação pela Universidade Anhembi Morumbi, com
-          certificações em AWS Security, fundamentos de redes/VPN e introdução à Cibersegurança.
+        <p class="about-lead">
+          <strong>DevOps Engineer</strong> e estudante de Segurança da Informação, focada em
+          infraestrutura, observabilidade, monitoramento e práticas de segurança.
         </p>
       </div>
       <div class="lang-card">
         <h3>idiomas</h3>
-        <div class="lang-row"><span>Português</span><span>nativo</span></div>
-        <div class="lang-row"><span>Inglês</span><span>profissional</span></div>
-        <div class="lang-row"><span>Espanhol</span><span>básico</span></div>
+        <div class="lang-row">
+          <span>Português</span>
+          <span class="lang-level" aria-label="nível: nativo">
+            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+          </span>
+        </div>
+        <div class="lang-row">
+          <span>Inglês</span>
+          <span class="lang-level" aria-label="nível: profissional">
+            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span>
+          </span>
+        </div>
+        <div class="lang-row">
+          <span>Espanhol</span>
+          <span class="lang-level" aria-label="nível: básico">
+            <span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </span>
+        </div>
       </div>
     </div>
   </section>
