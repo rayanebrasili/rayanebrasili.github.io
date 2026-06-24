@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rayane Brasili — DevOps & DevSecOps Engineer</title>
+<meta name="description" content="Portfólio de Rayane Brasili — DevOps Engineer especializada em DevSecOps, AppSec, Cloud (AWS/Azure) e Observabilidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0B0F14;
+    --bg-raised: #11161D;
+    --bg-card:   #131A22;
+    --border:    #1E2730;
+    --border-soft: #161E26;
+    --text:      #E6EDF3;
+    --text-dim:  #8B9AAB;
+    --text-faint:#5C6B7A;
+    --accent:    #39D98A;
+    --accent-dim:#1F6E4A;
+    --amber:     #F2B84B;
+    --red:       #F25C54;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---------- Top bar: fake terminal chrome ---------- */
+  .termbar {
+    border-bottom: 1px solid var(--border-soft);
+    background: rgba(11,15,20,0.85);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .termbar-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .termbar-id {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .dot-trio { display: flex; gap: 6px; }
+  .dot-trio span {
+    width: 9px; height: 9px; border-radius: 50%;
+    display: inline-block;
+  }
+  .dot-trio span:nth-child(1) { background: #F25C54; }
+  .dot-trio span:nth-child(2) { background: #F2B84B; }
+  .dot-trio span:nth-child(3) { background: #39D98A; }
+
+  .termbar-nav {
+    display: flex;
+    gap: 22px;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .termbar-nav a { color: var(--text-dim); }
+  .termbar-nav a:hover { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .termbar-nav { display: none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 88px 0 64px;
+  }
+
+  .status-line {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .status-line .pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(57,217,138,0.6);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(57,217,138,0.55); }
+    70%  { box-shadow: 0 0 0 8px rgba(57,217,138,0); }
+    100% { box-shadow: 0 0 0 0 rgba(57,217,138,0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .status-line .pulse { animation: none; }
+  }
+
+  .hero h1 {
+    font-family: var(--mono);
+    font-weight: 800;
+    font-size: clamp(32px, 6vw, 52px);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .hero h1 .glow { color: var(--accent); }
+
+  .hero .role {
+    font-family: var(--mono);
+    font-size: 15px;
+    color: var(--text-dim);
+    margin-bottom: 28px;
+  }
+  .hero .role .pipe { color: var(--text-faint); margin: 0 8px; }
+
+  .hero p.lede {
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 620px;
+    margin-bottom: 36px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 11px 18px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .btn:hover { transform: translateY(-1px); text-decoration: none; }
+  .btn-primary {
+    background: var(--accent);
+    color: #06120B;
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+  .btn-primary:hover { background: #4EE89D; }
+  .btn-ghost { color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- Section scaffolding ---------- */
+  section {
+    padding: 56px 0;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .section-head .tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    padding: 3px 9px;
+    border-radius: 4px;
+  }
+  .section-head h2 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  /* ---------- About ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+  }
+  @media (max-width: 700px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+  .about-text p { color: var(--text-dim); margin-bottom: 16px; font-size: 15.5px; }
+  .about-text strong { color: var(--text); font-weight: 600; }
+
+  .lang-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .lang-card h3 {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    margin-bottom: 14px;
+  }
+  .lang-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .lang-row:last-child { border-bottom: none; }
+  .lang-row span:last-child { color: var(--text-dim); font-family: var(--mono); font-size: 12.5px; }
+
+  /* ---------- Skills ---------- */
+  .skill-groups {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 700px) {
+    .skill-groups { grid-template-columns: 1fr; }
+  }
+  .skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+  }
+  .skill-card h3 {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .skill-card h3::before { content: "▸"; }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .skill-tags span {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 4px 9px;
+    border-radius: 4px;
+  }
+
+  /* ---------- Experience timeline ---------- */
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  @media (max-width: 600px) {
+    .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+  }
+  .timeline-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    padding-top: 2px;
+  }
+  .timeline-role { font-weight: 600; font-size: 15.5px; margin-bottom: 3px; }
+  .timeline-org { font-size: 14px; color: var(--accent); font-family: var(--mono); margin-bottom: 8px; }
+  .timeline-desc { font-size: 14.5px; color: var(--text-dim); }
+
+  /* ---------- Projects: service cards ---------- */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 700px) {
+    .project-grid { grid-template-columns: 1fr; }
+  }
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .project-card:hover {
+    border-color: var(--accent-dim);
+    transform: translateY(-2px);
+  }
+  .project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .project-head h3 {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .badge {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+    border: 1px solid;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .badge-wip { color: var(--amber); border-color: var(--accent-dim); background: rgba(242,184,75,0.08); border-color: rgba(242,184,75,0.3); }
+  .badge-planned { color: var(--text-faint); border-color: var(--border); background: var(--bg-raised); }
+
+  .project-card p { font-size: 13.5px; color: var(--text-dim); flex-grow: 1; }
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .project-stack span {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    background: var(--bg-raised);
+    padding: 3px 7px;
+    border-radius: 4px;
+  }
+  .project-link {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+  .project-link:hover { color: var(--accent); }
+
+  /* ---------- Certifications ---------- */
+  .cert-list { display: flex; flex-direction: column; gap: 0; }
+  .cert-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 14.5px;
+    gap: 16px;
+  }
+  .cert-row:last-child { border-bottom: none; }
+  .cert-row .cert-name { color: var(--text); }
+  .cert-row .cert-meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+
+  /* ---------- Contact / footer ---------- */
+  .contact-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+  }
+  .contact-box h2 {
+    font-family: var(--mono);
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .contact-box p { color: var(--text-dim); margin-bottom: 26px; }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  footer {
+    padding: 32px 0 48px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+</style>
+</head>
+<body>
+
+<div class="termbar">
+  <div class="termbar-inner">
+    <div class="termbar-id">
+      <span class="dot-trio"><span></span><span></span><span></span></span>
+      rayane@portfolio:~$
+    </div>
+    <nav class="termbar-nav">
+      <a href="#sobre">sobre</a>
+      <a href="#skills">skills</a>
+      <a href="#experiencia">experiência</a>
+      <a href="#projetos">projetos</a>
+      <a href="#certificacoes">certificações</a>
+      <a href="#contato">contato</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="status-line">
+      <span class="pulse"></span>
+      status: disponível para novas oportunidades
+    </div>
+    <h1>Rayane Brasili<span class="glow">.</span></h1>
+    <div class="role">
+      DevOps Engineer <span class="pipe">|</span> DevSecOps <span class="pipe">|</span> AppSec <span class="pipe">|</span> Cloud Infra
+    </div>
+    <p class="lede">
+      Atuo na interseção entre infraestrutura e segurança: pipelines CI/CD, observabilidade
+      e práticas de DevSecOps em ambientes AWS e Azure. Estudante de Segurança da Informação,
+      construindo o caminho de DevOps para AppSec.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projetos">ver projetos →</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/rayanebrasili-257979207" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="mailto:brasilisray@gmail.com">e-mail</a>
+    </div>
+  </header>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="section-head">
+      <span class="tag">01</span>
+      <h2>sobre</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Sou <strong>DevOps Engineer</strong> com foco em infraestrutura, observabilidade
+          e monitoramento, atuando atualmente no time de <strong>DevSecOps / AppSec</strong>
+          na Ânima Educação, contribuindo com práticas de segurança em ambientes cloud,
+          FinOps e pipelines de CI/CD.
+        </p>
+        <p>
+          Minha trajetória começou em suporte técnico e projetos M2M & IoT, passou por times
+          de Cloud Analyst em empresas de tecnologia e monitoramento, e hoje converge para
+          segurança de aplicações — unindo a visão operacional de DevOps com a mentalidade
+          de defesa da Segurança da Informação.
+        </p>
+        <p>
+          Graduada em Segurança da Informação pela Universidade Anhembi Morumbi, com
+          certificações em AWS Security, fundamentos de redes/VPN e introdução à Cibersegurança.
+        </p>
+      </div>
+      <div class="lang-card">
+        <h3>idiomas</h3>
+        <div class="lang-row"><span>Português</span><span>nativo</span></div>
+        <div class="lang-row"><span>Inglês</span><span>profissional</span></div>
+        <div class="lang-row"><span>Espanhol</span><span>básico</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-head">
+      <span class="tag">02</span>
+      <h2>skills</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-card">
+        <h3>cloud & infra</h3>
+        <div class="skill-tags">
+          <span>AWS</span><span>Azure</span><span>Terraform</span><span>Docker</span><span>FinOps</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>segurança</h3>
+        <div class="skill-tags">
+          <span>AppSec</span><span>DevSecOps</span><span>VPN</span><span>AWS Security</span><span>Cloudflare</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>ci/cd & automação</h3>
+        <div class="skill-tags">
+          <span>GitHub Actions</span><span>Pipelines CI/CD</span><span>GitOps</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>observabilidade</h3>
+        <div class="skill-tags">
+          <span>Monitoramento</span><span>Logs</span><span>Balanced Scorecard</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia">
+    <div class="section-head">
+      <span class="tag">03</span>
+      <h2>experiência</h2>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">mar 2026 — atual</div>
+      <div>
+        <div class="timeline-role">DevOps Engineer</div>
+        <div class="timeline-org">Grupo Taking · Ânima Educação</div>
+        <div class="timeline-desc">
+          Atuação no time de DevSecOps / AppSec, contribuindo com práticas de segurança em
+          ambientes cloud, FinOps, pipelines CI/CD e aplicações.
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">jun 2024 — ago 2025</div>
+      <div>
+        <div class="timeline-role">Cloud Analyst</div>
+        <div class="timeline-org">Linx — DevOps FOOD Team</div>
+        <div class="timeline-desc">Operação e suporte de infraestrutura cloud para o time de produtos FOOD.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">nov 2022 — jun 2024</div>
+      <div>
+        <div class="timeline-role">Cloud Analyst</div>
+        <div class="timeline-org">Linx — Cloud Team</div>
+        <div class="timeline-desc">Atuação em time de infraestrutura cloud corporativa.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">dez 2021 — set 2022</div>
+      <div>
+        <div class="timeline-role">Estagiária — Projeto e Desenvolvimento M2M & IoT</div>
+        <div class="timeline-org">Neemo / Fulltime — Monitoramento e Rastreamento</div>
+        <div class="timeline-desc">Desenvolvimento de soluções M2M & IoT em empresa de monitoramento e rastreamento.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">jun 2021 — nov 2021</div>
+      <div>
+        <div class="timeline-role">Estagiária Suporte Técnico</div>
+        <div class="timeline-org">Neemo / Fulltime</div>
+        <div class="timeline-desc">Suporte técnico em soluções de monitoramento e rastreamento.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos">
+    <div class="section-head">
+      <span class="tag">04</span>
+      <h2>projetos</h2>
+    </div>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="project-head">
+          <h3>secure-cicd-pipeline</h3>
+          <span class="badge badge-wip">em progresso</span>
+        </div>
+        <p>Pipeline CI/CD com gate de segurança: build, SAST (Semgrep), scan de dependências (Trivy) e deploy condicional.</p>
+        <div class="project-stack"><span>GitHub Actions</span><span>Semgrep</span><span>Trivy</span></div>
+        <a class="project-link" href="#" target="_blank" rel="noopener">→ ver repositório</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-head">
+          <h3>iac-hardened-infra</h3>
+          <span class="badge badge-planned">planejado</span>
+        </div>
+        <p>Infraestrutura como código na AWS com boas práticas de segurança: IAM least privilege, security groups restritivos, secrets management.</p>
+        <div class="project-stack"><span>Terraform</span><span>AWS</span><span>IAM</span></div>
+        <a class="project-link" href="#" target="_blank" rel="noopener">→ ver repositório</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-head">
+          <h3>observability-stack</h3>
+          <span class="badge badge-planned">planejado</span>
+        </div>
+        <p>Stack de observabilidade do zero para aplicação containerizada: métricas, logs e alertas configurados.</p>
+        <div class="project-stack"><span>Prometheus</span><span>Grafana</span><span>Loki</span></div>
+        <a class="project-link" href="#" target="_blank" rel="noopener">→ ver repositório</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-head">
+          <h3>container-vuln-scanner</h3>
+          <span class="badge badge-planned">planejado</span>
+        </div>
+        <p>Pipeline que recebe uma imagem Docker, escaneia vulnerabilidades e gera relatório formatado.</p>
+        <div class="project-stack"><span>Docker</span><span>Trivy</span><span>Python</span></div>
+        <a class="project-link" href="#" target="_blank" rel="noopener">→ ver repositório</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-head">
+          <h3>secure-vpn-lab</h3>
+          <span class="badge badge-planned">planejado</span>
+        </div>
+        <p>Ambiente containerizado de VPN (WireGuard) com documentação de arquitetura de rede e decisões de segurança.</p>
+        <div class="project-stack"><span>Docker</span><span>WireGuard</span></div>
+        <a class="project-link" href="#" target="_blank" rel="noopener">→ ver repositório</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-head">
+          <h3>finops-cost-dashboard</h3>
+          <span class="badge badge-planned">planejado</span>
+        </div>
+        <p>Script/Lambda que consulta custos da AWS via API e gera dashboard de gastos por serviço.</p>
+        <div class="project-stack"><span>Python</span><span>AWS Lambda</span><span>Cost Explorer API</span></div>
+        <a class="project-link" href="#" target="_blank" rel="noopener">→ ver repositório</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICACOES -->
+  <section id="certificacoes">
+    <div class="section-head">
+      <span class="tag">05</span>
+      <h2>certificações</h2>
+    </div>
+    <div class="cert-list">
+      <div class="cert-row">
+        <span class="cert-name">AWS Security Fundamentals</span>
+        <span class="cert-meta">AWS</span>
+      </div>
+      <div class="cert-row">
+        <span class="cert-name">Introduction to Cybersecurity</span>
+        <span class="cert-meta">Cisco</span>
+      </div>
+      <div class="cert-row">
+        <span class="cert-name">Segurança de redes: protegendo dados com VPNs</span>
+        <span class="cert-meta">—</span>
+      </div>
+      <div class="cert-row">
+        <span class="cert-name">Docker Completo — Do Zero ao Avançado</span>
+        <span class="cert-meta">—</span>
+      </div>
+      <div class="cert-row">
+        <span class="cert-name">Operating Systems Basics</span>
+        <span class="cert-meta">—</span>
+      </div>
+      <div class="cert-row">
+        <span class="cert-name">Cybersecurity: Anatomy of a Cyber Attack</span>
+        <span class="cert-meta">FGV</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="contact-box">
+      <h2>vamos conversar?</h2>
+      <p>Aberta a oportunidades em DevOps, DevSecOps e Cloud Security.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:brasilisray@gmail.com">brasilisray@gmail.com</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/rayanebrasili-257979207" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/rayanebrasili" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    build status: <span style="color: var(--accent);">passing</span> · São Paulo, Brasil · © 2026 Rayane Brasili
+  </footer>
+
+</div>
+
+</body>
+</html>
